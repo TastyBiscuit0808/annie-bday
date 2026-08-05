@@ -34,25 +34,19 @@ const comfortNotes = [
 
 const compliments = [
   "You make me smile all the time. You have the best sense of humour and I love that about you. 🥺🥺🥺",
-  "You are genuinely one of the smartest and the most hardworking people I know. I'm very proud of you 💪💪",
+  "You are genuinely one of the smartest and the most hardworking person I know. I'm very proud of you 💪💪",
   "If I could pick anyone to do life with, it would always be you.",
   "You are the most beautiful person I know, inside and out (that's what she said). I love you so much. 🫶💌💕✨",
   "Every day with you is my favorite day. You make life better just by being in it.",
 ];
 
 const dadJokes = [
-  "Why did the scarecrow win an award? He was outstanding in his field. 🌾",
-  "I told my wife she was drawing her eyebrows too high. She looked surprised.",
-  "What do you call a fake noodle? An impasta. 🍝",
+  "How do you spot a blind person at a nude beach? It's not hard.",
   "Why don't eggs tell jokes? They'd crack each other up.",
-  "I'm reading a book about anti-gravity. It's impossible to put down.",
-  "What did the ocean say to the beach? Nothing — it just waved. 🌊",
+  "what do you call a lazy sun? A slowlar panel. ☀️",
+  "What do you call an expert fisherman? A master baiter. 🍝",
+  "What's the best thing about Switzerland? I don't know, but the flag is a big plus.",
   "Why did the coffee file a police report? It got mugged. ☕",
-  "I used to hate facial hair, but then it grew on me.",
-  "What do you call a bear with no teeth? A gummy bear. 🐻",
-  "Why did the bicycle fall over? Because it was two-tired.",
-  "I'd tell you a joke about construction, but I'm still working on it.",
-  "What did one wall say to the other? I'll meet you at the corner.",
 ];
 
 // ─── State ───────────────────────────────────────────────────
