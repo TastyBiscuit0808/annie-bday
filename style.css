@@ -1,0 +1,667 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --rose: #e8a0b8;
+  --rose-deep: #ffbfd4;
+  --blush: #fdf2f6;
+  --cream: #fffaf7;
+  --navy: #102a4d;
+  --navy-soft: #1f3f73;
+  --text: #ffd9e8;
+  --text-soft: #f2bfd0;
+  --shadow: rgba(16, 42, 77, 0.16);
+  --radius: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Quicksand", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12) 0%, transparent 24%),
+    radial-gradient(circle at bottom right, rgba(232, 160, 184, 0.24) 0%, transparent 34%),
+    radial-gradient(circle at top right, rgba(255, 210, 228, 0.18) 0%, transparent 20%),
+    radial-gradient(circle at 20% 80%, rgba(204, 218, 255, 0.18) 0%, transparent 32%),
+    linear-gradient(135deg, #081a35 0%, #0f2d57 35%, #173867 70%, #102a4d 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* Intro envelope */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12) 0%, transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 219, 232, 0.12) 0%, transparent 20%),
+    radial-gradient(circle at bottom center, rgba(244, 198, 216, 0.16) 0%, transparent 32%),
+    linear-gradient(135deg, #081a35 0%, #0f2d57 35%, #173867 70%, #102a4d 100%);
+  transition: opacity 0.6s ease;
+}
+
+.intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope {
+  text-align: center;
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.envelope-body {
+  width: 200px;
+  height: 130px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(16, 42, 77, 0.3);
+  transition: transform 0.6s ease;
+}
+
+.envelope-flap {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 70px solid #21477f;
+  margin: 0 auto -2px;
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.opened .envelope-body {
+  transform: scale(1.05);
+}
+
+.envelope-heart {
+  font-size: 3rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.envelope-label {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.envelope-btn {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(16, 42, 77, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(232, 160, 184, 0.2) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.12) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(182, 204, 255, 0.12));
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.hero-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffd8e7;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  font-weight: 700;
+  color: #ffe1ed;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: #f6c6d8;
+  max-width: 28ch;
+  margin: 0 auto;
+}
+
+.hero-hint {
+  font-size: 0.8rem;
+  color: #ffd4e3;
+  margin-top: 0.75rem;
+  opacity: 0.9;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(24, 46, 84, 0.92), rgba(10, 23, 47, 0.88)),
+    rgba(12, 27, 55, 0.78);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 35%, rgba(232, 160, 184, 0.08));
+  pointer-events: none;
+}
+
+.timeline-section { animation-delay: 0.1s; }
+.love-section { animation-delay: 0.15s; }
+.letter-section { animation-delay: 0.2s; }
+.memories-section { animation-delay: 0.25s; }
+.comfort-section { animation-delay: 0.3s; }
+.coupons-section { animation-delay: 0.35s; }
+.joke-section { animation-delay: 0.4s; }
+.compliment-section { animation-delay: 0.45s; }
+
+.card h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+  color: #f8d8e5;
+}
+
+.section-hint {
+  font-size: 0.9rem;
+  color: #e9bfd0;
+  margin-bottom: 1.25rem;
+}
+
+.reason-display,
+.joke-display,
+.comfort-display,
+.compliment-display {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(16, 42, 77, 0.9) 0%, rgba(31, 63, 115, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-display.reveal,
+.joke-display.reveal,
+.comfort-display.reveal,
+.compliment-display.reveal {
+  animation: popIn 0.45s ease-out;
+}
+
+.reason-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.reason-text,
+.joke-text,
+.comfort-text,
+.compliment-text {
+  font-size: 1.1rem;
+  color: #f8d8e5;
+  max-width: 36ch;
+}
+
+.joke-text {
+  font-style: italic;
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  border-left: 2px solid var(--navy);
+  margin-left: 0.5rem;
+  padding-left: 1.25rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "♥";
+  position: absolute;
+  left: -1.75rem;
+  top: 0;
+  font-size: 0.72rem;
+  color: #ffd7e6;
+  background: rgba(16, 42, 77, 0.95);
+  padding: 0.15rem 0.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.timeline-date {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #ffd0df;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-text {
+  font-size: 0.95rem;
+  color: #f6cadc;
+}
+
+/* Love letter */
+.letter-section.locked .letter-content {
+  filter: blur(6px);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.lock-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffe2ee;
+  background: rgba(16, 42, 77, 0.9);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.lock-badge.unlocked {
+  color: #ffd7e6;
+  background: rgba(31, 63, 115, 0.95);
+}
+
+.letter-content {
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-content p {
+  margin-bottom: 0.85rem;
+  font-size: 0.98rem;
+  color: #f7c8da;
+  line-height: 1.7;
+}
+
+.letter-greeting,
+.letter-sign {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--text) !important;
+}
+
+.letter-sign {
+  font-style: italic;
+  margin-bottom: 0 !important;
+}
+
+/* Photo grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.photo-card {
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  aspect-ratio: 1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.photo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.photo-card.photo-pop {
+  animation: popIn 0.4s ease-out;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(16, 42, 77, 0.92) 0%, rgba(31, 63, 115, 0.8) 100%);
+  border: 2px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+}
+
+.photo-emoji {
+  font-size: 2.5rem;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-caption {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f7c8da;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.photo-note {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.photo-note code {
+  background: var(--blush);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+/* Comfort tabs */
+.comfort-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.comfort-tab {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(199, 107, 138, 0.3);
+  border-radius: 999px;
+  background: white;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.comfort-tab:hover,
+.comfort-tab.active {
+  background: var(--navy);
+  color: white;
+  border-color: var(--navy);
+}
+
+/* Coupons */
+.coupon-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.coupon-card {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff9f0 0%, #fff3e0 100%);
+  border: 2px dashed #ffb347;
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.coupon-card.redeemed {
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+
+.coupon-title {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #5a3e20;
+  margin-bottom: 0.3rem;
+}
+
+.coupon-detail {
+  font-size: 0.88rem;
+  color: #7a6040;
+  margin-bottom: 0.75rem;
+}
+
+.coupon-redeem {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border: none;
+  border-radius: 8px;
+  background: #ffb347;
+  color: #5a3e20;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.coupon-redeem:hover {
+  background: #ff9f1a;
+}
+
+.coupon-card.redeemed .coupon-redeem {
+  background: var(--rose);
+  color: white;
+  cursor: default;
+}
+
+.progress {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(16, 42, 77, 0.35);
+  margin-bottom: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(16, 42, 77, 0.45);
+  filter: brightness(1.05);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #ffd89b 0%, #ffb347 100%);
+  color: #5a3e20;
+  box-shadow: 0 4px 16px rgba(255, 179, 71, 0.3);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 6px 20px rgba(255, 179, 71, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+.btn-ghost:hover {
+  color: var(--rose-deep);
+  transform: none;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 1rem;
+  animation: fadeUp 0.8s ease-out 0.45s both;
+}
+
+.footer p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.footer-sign {
+  margin-top: 0.35rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  color: var(--rose-deep);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift, 0px), -140px, 0) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.2rem;
+  z-index: 100;
+  animation: floatHeart 2s ease-out forwards;
+  filter: drop-shadow(0 2px 4px rgba(199, 107, 138, 0.25));
+}
+
+@media (min-width: 600px) {
+  .container {
+    padding-top: 3.5rem;
+  }
+
+  .card {
+    padding: 2rem 2rem;
+  }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Anna 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hearts-bg" aria-hidden="true"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- Opening envelope -->
+  <div class="intro-overlay" id="introOverlay">
+    <div class="envelope" id="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-body">
+        <span class="envelope-heart">💌</span>
+      </div>
+      <p class="envelope-label">Something for you…</p>
+      <button class="btn btn-primary envelope-btn" id="openEnvelopeBtn">Open me</button>
+    </div>
+  </div>
+
+  <main class="container hidden" id="mainContent">
+    <header class="hero">
+      <p class="hero-label">A little something for you</p>
+      <h1>Happy Birthday, Anna</h1>
+      <p class="hero-sub">Today is all about you — and how much you mean to me.</p>
+      <p class="hero-hint">Psst — click anywhere for a little magic ✨</p>
+    </header>
+
+    <section class="card timeline-section">
+      <h2>Our Story</h2>
+      <p class="section-hint">Little moments that mean everything</p>
+      <ul class="timeline" id="timeline"></ul>
+    </section>
+
+    <section class="card love-section">
+      <h2>Reasons I Love You</h2>
+      <p class="section-hint">Click the button to reveal one at a time ✨</p>
+
+      <div class="reason-display" id="reasonDisplay">
+        <span class="reason-icon">💗</span>
+        <p class="reason-text" id="reasonText">Ready when you are…</p>
+      </div>
+
+      <div class="progress">
+        <span id="reasonCount">0</span> / <span id="reasonTotal">0</span> reasons revealed
+      </div>
+
+      <button class="btn btn-primary" id="nextReasonBtn">Tell me another reason</button>
+      <button class="btn btn-ghost" id="resetReasonsBtn">Start over</button>
+    </section>
+
+    <!-- Unlocks after all reasons -->
+    <section class="card letter-section locked" id="letterSection">
+      <div class="lock-badge" id="letterLock">🔒 Read all the reasons first</div>
+      <h2>A Letter For You</h2>
+      <p class="section-hint">Written from the heart</p>
+      <div class="letter-content" id="letterContent">
+        <p class="letter-greeting">My dearest Anna,</p>
+        <p>Happy Birthday babeeee… 🥰🥰🥰🥰💕🎉 I hope you have a great year ahead. I made this website because the words on a card didn’t feel enough — you deserve something that unfolds, bit by bit, the way you’ve unfolded into the best part of my life. ✨💗</p>
+        <p>Thank you for being such a huge part of my life, my dream has come true. Thank you for choosing me, again and again, even though I annoy you so much 😭💘 I hope today feels as special to you as you make me feel every single day. 💖🥺</p>
+        <p>I love you soooooooo much, thank you for everything. 🫶💌💕✨</p>
+        <p class="letter-sign">Forever yours 💕</p>
+      </div>
+    </section>
+
+    <section class="card memories-section">
+      <h2>Us in Pictures</h2>
+      <p class="section-hint">Some of my favorite memories with you</p>
+      <div class="photo-grid" id="photoGrid"></div>
+    </section>
+
+    <section class="card comfort-section">
+      <h2>Open When…</h2>
+      <p class="section-hint">Little notes for whenever you need them</p>
+      <div class="comfort-tabs" id="comfortTabs"></div>
+      <div class="comfort-display" id="comfortDisplay">
+        <p class="comfort-text" id="comfortText">Pick a note above 💗</p>
+      </div>
+    </section>
+
+    <section class="card joke-section">
+      <h2>And Because It's Me…</h2>
+      <p class="section-hint">A dad joke, because I can't help myself 😭</p>
+
+      <div class="joke-display" id="jokeDisplay">
+        <p class="joke-text" id="jokeText">Click for a terrible joke. You've been warned.</p>
+      </div>
+
+      <button class="btn btn-secondary" id="nextJokeBtn">Hit me with a dad joke</button>
+    </section>
+
+    <section class="card compliment-section">
+      <h2>Need a Smile?</h2>
+      <p class="section-hint">One click, one sweet thought</p>
+      <div class="compliment-display" id="complimentDisplay">
+        <p class="compliment-text" id="complimentText">I'm saving the best ones for you…</p>
+      </div>
+      <button class="btn btn-primary" id="complimentBtn">Say something nice</button>
+    </section>
+
+    <footer class="footer">
+      <p>Made with love, just for you.</p>
+      <p class="footer-sign">— Yours always 💕</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
