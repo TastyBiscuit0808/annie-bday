@@ -6,22 +6,23 @@ const timeline = [
   { date: "When I asked you out", text: "I was soo nervous, but when you told yes, I was the happiest person in the world. Thank you sooooo much 🥰🥰🥰" },
   { date: "Our first date", text: "I'll never forget that day, June 13th 🥺🥺🥺. The first time we held hands, I felt like I was in a dream 🥺🥺." },
   { date: "Our first kiss", text: "The moment I kissed you, I knew I was completely and utterly in love with you 🥰🥰🥰🥰" },
+  { date: "My Birthday", text: "You did soo much for me that I'll never forget. Thank you for making my birthday so special 🎂🎉" },
   { date: "Today", text: "Still choosing you, still smiling at you, still veryyyyy grateful you’re in my life. Thank you for everything 🥰🥰" },
 ];
 
 const reasons = [
-  "You have the best sense of humour, you make me laugh all the time.",
-  "You put a lot of efforts into this relationship. Which makes me feel loved and appreciated.",
-  "You're incredibly supportive, especially during my tough moments. And you understand me in ways no one else does.",
+  "You have literally the best sense of humour, you make me laugh all the time. I never feel stressed when I'm around you. 🥰🥰🥰. Your jokes make me laugh every time.",
+  "You put a lot of efforts into this relationship. Which makes me feel loved and appreciated. I love you so much for that. I'll never forget the things you do for me. 🥰🥰",
+  "You're incredibly supportive, especially during my tough moments. And you understand me in ways no one else does. 🥰🥰🥰🥰",
   "You look soooooo beautifulll....omggg sooo prettyyyyyyyyyyyy 😍😍😍",
-  "Because you're you — and that's more than enough.",
+  "Because you're you — and that's more than enough. I love you for exactly who you are, and I wouldn't change a thing about you. 🥰🥰🥰",
 ];
 
 const memories = [
   { caption: "Adventure together", emoji: "🌅", src: "images/first-date.jpg" },
-  { caption: "Date night", emoji: "🍕", src: "images/first-date.jpg" },
-  { caption: "Just us", emoji: "📸", src: "images/first-date.jpg" },
-  { caption: "My favorite smile", emoji: "😊", src: "images/first-date.jpg" },
+  { caption: "Date night", emoji: "🍕", src: "images/Photo2.jpg" },
+  { caption: "Just us", emoji: "📸", src: "images/Photo3.jpg" },
+  { caption: "My favorite smile", emoji: "😊", src: "images/Photo4.jpg" },
 ];
 
 const comfortNotes = [
