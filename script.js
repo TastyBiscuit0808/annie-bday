@@ -11,9 +11,9 @@ const timeline = [
 ];
 
 const reasons = [
-  "You have literally the best sense of humour, you make me laugh all the time. I never feel stressed when I'm around you. 🥰🥰🥰. Your jokes make me laugh every time.",
+  "You literally have the best sense of humour, you make me laugh all the time. I never feel stressed when I'm around you. 🥰🥰🥰. Your jokes make me laugh every time.",
   "You put a lot of efforts into this relationship. Which makes me feel loved and appreciated. I love you so much for that. I'll never forget the things you do for me. 🥰🥰",
-  "You're incredibly supportive, especially during my tough moments. And you understand me in ways no one else does. 🥰🥰🥰🥰",
+  "You're incredibly supportive, especially during my tough times. And you understand me in ways no one else does. 🥰🥰🥰🥰",
   "You look soooooo beautifulll....omggg sooo prettyyyyyyyyyyyy 😍😍😍",
   "Because you're you — and that's more than enough. I love you for exactly who you are, and I wouldn't change a thing about you. 🥰🥰🥰",
 ];
@@ -37,7 +37,7 @@ const compliments = [
   "You make me smile all the time. You have the best sense of humour and I love that about you. 🥺🥺🥺",
   "You are genuinely one of the smartest and the most hardworking person I know. I'm very proud of you 💪💪",
   "If I could pick anyone to do life with, it would always be you.",
-  "You are the most beautiful person I know, inside and out (that's what she said). I love you so much. 🫶💌💕✨",
+  "You are the most beautiful person I know, inside and out. I love you so much. 🫶💌💕✨",
   "Every day with you is my favorite day. You make life better just by being in it.",
 ];
 
