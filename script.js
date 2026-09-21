@@ -66,6 +66,8 @@ const openEnvelopeBtn = document.getElementById("openEnvelopeBtn");
 const envelope = document.getElementById("envelope");
 const mainContent = document.getElementById("mainContent");
 const confettiCanvas = document.getElementById("confettiCanvas");
+const musicToggle = document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
 const timelineEl = document.getElementById("timeline");
 const photoGrid = document.getElementById("photoGrid");
 const comfortTabs = document.getElementById("comfortTabs");
@@ -179,10 +181,44 @@ function animateConfetti() {
 
 // ─── Intro envelope ──────────────────────────────────────────
 
+function setMusicState(isPlaying) {
+  if (!bgMusic) return;
+  bgMusic.volume = 0.4;
+  bgMusic.muted = !isPlaying;
+
+  if (musicToggle) {
+    musicToggle.textContent = isPlaying ? "🔊 Music on" : "🔇 Music off";
+    musicToggle.classList.toggle("muted", !isPlaying);
+  }
+}
+
+function toggleMusic() {
+  if (!bgMusic) return;
+  const shouldPlay = bgMusic.muted;
+  setMusicState(shouldPlay);
+
+  if (shouldPlay) {
+    bgMusic.play().catch(() => {});
+  } else {
+    bgMusic.pause();
+  }
+}
+
 function openEnvelope() {
   envelope.classList.add("opened");
   openEnvelopeBtn.disabled = true;
   openEnvelopeBtn.textContent = "Opening…";
+
+  if (bgMusic) {
+    bgMusic.currentTime = 0;
+    bgMusic.volume = 0.45;
+    bgMusic.muted = false;
+    bgMusic.play().catch(() => {});
+    if (musicToggle) {
+      musicToggle.textContent = "🔊 Music on";
+      musicToggle.classList.remove("muted");
+    }
+  }
 
   setTimeout(() => {
     introOverlay.classList.add("fade-out");
@@ -317,10 +353,13 @@ resizeConfettiCanvas();
 startAmbientHearts();
 
 openEnvelopeBtn.addEventListener("click", openEnvelope);
+musicToggle.addEventListener("click", toggleMusic);
 nextReasonBtn.addEventListener("click", revealReason);
 resetReasonsBtn.addEventListener("click", resetReasons);
 nextJokeBtn.addEventListener("click", showJoke);
 complimentBtn.addEventListener("click", showCompliment);
+
+setMusicState(false);
 
 document.addEventListener("click", (e) => {
   if (introOverlay && document.body.contains(introOverlay)) return;
